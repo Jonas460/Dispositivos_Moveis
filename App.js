@@ -14,7 +14,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text >Você clicou {counter} {text}</Text>
+
       <Separator />
+
       <Button
         onPress={() => setCounter(counter + 1)}
         title='Clique' />
