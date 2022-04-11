@@ -1,42 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import React, { useState } from 'react';
 
 export default function App() {
-  const [counter, setCounter] = useState(0);
-
-  const Separator = () => (
-    <View style={styles.separator} />
-  );
-
-  const text = (counter === 1) ? `vez` : `vezes`
+  const [text, setText] = useState('');
 
   return (
     <View style={styles.container}>
-      <Text >Você clicou {counter} {text}</Text>
-      <Separator />
-      <Button
-        onPress={() => setCounter(counter + 1)}
-        title='Clique' />
-      <Separator />
-      <Button
-        onPress={() => setCounter(0)}
-        title='Limpar' />
-      <StatusBar style="auto" />
+      <TextInput
+        style={{ height: 40 }}
+        placeholder="Type here to translate!"
+        onChangeText={newText => setText(newText)}
+        defaultValue={text}
+      />
+      <Text style={styles.text}>
+        {text}
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#c2c2c2',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    padding: 10,
+    fontSize: 42,
   },
 });
